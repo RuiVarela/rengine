@@ -1,7 +1,5 @@
-# rengine
+# R-Engine : Raw-Engine - 3D Framework.
 a never ending 3d engine
-
-R-Engine : Raw-Engine - 3D Framework.
 Rui Varela - rui.filipe.varela@gmail.com
 
 I may have used code that was not mine... sorry
