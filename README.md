@@ -8,6 +8,7 @@ I may have used code that was not mine... sorry
 
 
 #Engine Progress
+~~~
 [xx.xx.xx] -- Image Processing System
 [xx.xx.xx] -- Post Processing Units
 [xx.xx.xx] -- Spline Lib and NURBS
@@ -196,57 +197,74 @@ I may have used code that was not mine... sorry
 [12.04.08] -- FreeImage was replaced by Sean Barrett public domain image loaders http://nothings.org/.
 [15.03.08] -- Boost Libs (SharedPointer, XML serialization) were replaced by smokin lightweight libs.
 [xx.xx.xx] -- I should have begun reporting engine status a long long time ago...
+~~~
 
 # Notes on Effect System
 An effect file contains the source needed for the corresponding shaders (VertexShader, FragmentShader). The source is organized in sections.
+
 A section starts with //!pragma section [common, vertex, fragment, varying], only one whitespace is allowed between tokens.
+
 The following are valid:
+~~~
 //!pragma section common
 //!pragma section vertex
 //!pragma section fragment
+~~~
 The following are invalid:
+~~~
 //!pragma section  common
 //!pragma  section vertex
 // !pragma section fragment
+~~~
 
 The "common" section will be included at the beginning all shaders.
 
 The "varying" section contains the variables passed from the vertex shader to the fragment shader, they will be included on both shaders with the correct prefix (out: vertex, in: fragment) 
+~~~
 vec3 normal;
 vec3 light_vector;
 vec3 eye_vector;
+~~~
 
 One can include source code from another file with pragma include. This pragma recursively includes source from shader files.
+~~~
 //!pragma include includes.shd
 //!pragma include test/math.shd
+~~~
 
 Lines starting with uniform, will allow uniform's name autodetection. They will be available on C++ code with no further effort.
 uniform vec4 color;
 
 Uniforms present in the effect file are auto-discovered and are added to the Program object. Auto-Discover currently supports:
-- float, vec2, vec3, vec4
-- int ivec2, ivec3, ivec4
-- mat4, mat4x4
-- arrays
-- multi-variable declaration on the same statement: int x, y, z;
+~~~
+float, vec2, vec3, vec4
+int ivec2, ivec3, ivec4
+mat4, mat4x4
+arrays
+multi-variable declaration on the same statement: int x, y, z;
+~~~
 Structs are not supported!
 
 One can set the initial/default value for a uniform using //!pragma default [name] [values]
+~~~
 //!pragma default color 1.0, 1.0, 1.0, 1.0
+~~~
 
-VertexShader inputs are autodiscovered and registered on the program object. By default every input is binded to VertexBufferObject data channel using the order of declaration,
-The engine allows semantic binding, to allow out of order channel binding, the //!pragma semantic directive sets the input semantic.
+VertexShader inputs are autodiscovered and registered on the program object. By default every input is binded to VertexBufferObject data channel using the order of declaration, The engine allows semantic binding, to allow out of order channel binding, the //!pragma semantic directive sets the input semantic.
+
+~~~
 //!pragma semantic input_color color
+~~~
 At runtime the engine will bind the vertex shader input "input_color" to a VertexBufferObject data channel with the same semantic (Color)
 
 # Error Codes
-001XX Image
-002XX CharMap
-003XX Console
-004XX System
-005XX Mesh
-006XX Text
-1XXXX Application Range
+- 001XX Image
+- 002XX CharMap
+- 003XX Console
+- 004XX System
+- 005XX Mesh
+- 006XX Text
+- 1XXXX Application Range
 
 # Third Party Source Code
 - OpenGL Extension Wrangler Library (GLEW) - http://glew.sourceforge.net/ - BSD License
@@ -255,9 +273,9 @@ At runtime the engine will bind the vertex shader input "input_color" to a Verte
 - tinyxml - http://www.grinninglizard.com/tinyxml/ - Permissive License
 
 # Preprocessor definitions
-#define _CRT_SECURE_NO_DEPRECATE //windows
-#define GLEW_STATIC
-#define XRANDR_EXTENSIONS // to enable X11 resolution change (if defined you must link with Xrandr)
+- #define _CRT_SECURE_NO_DEPRECATE //windows
+- #define GLEW_STATIC
+- #define XRANDR_EXTENSIONS // to enable X11 resolution change (if defined you must link with Xrandr)
 
 # Notes
 - 3ds is not thread safe!
