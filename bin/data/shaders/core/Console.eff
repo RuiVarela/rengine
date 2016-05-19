@@ -1,0 +1,44 @@
+//!pragma section common
+// Console.eff
+// Console rendering
+#version 130
+
+//!pragma semantic input_position position
+//!pragma semantic input_texture_coords texcoords
+
+//!pragma section varying 
+vec2 background_texture_coordinate; 
+vec2 float_texture_coordinate;
+vec2 texture_coordinate; 
+
+//!pragma section vertex
+uniform mat4 projection;
+uniform float time;
+
+in vec3 input_position;
+in vec2 input_texture_coords;
+void main()
+{			
+	float x_shift = time * 0.03;
+	float y_shift = time * 0.1;
+	
+	texture_coordinate = input_texture_coords.st;
+	background_texture_coordinate = texture_coordinate * vec2(5.0, 2.2) + vec2(x_shift, 0.0);
+	float_texture_coordinate = background_texture_coordinate + vec2(x_shift * 2.0, y_shift);
+	
+	gl_Position = projection * vec4(input_position, 1.0);
+}
+
+//!pragma section fragment
+uniform sampler2D background;
+uniform sampler2D floating_background;
+
+out vec4 frag_color;
+void main()
+{
+	vec4 background_color = texture2D(background, background_texture_coordinate);
+	vec4 floating_color = texture2D(floating_background, float_texture_coordinate);
+	float line_detector = step(texture_coordinate.t, 0.001);
+	
+	frag_color = mix( mix(background_color, floating_color, 0.2), vec4(1.0, 0.0, 0.0, 1.0), line_detector);
+}

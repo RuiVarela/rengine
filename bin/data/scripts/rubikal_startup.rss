@@ -1,0 +1,66 @@
+bindingAdd Push y set cube_depth 0
+bindingAdd Push h set cube_depth 1
+bindingAdd Push n set cube_depth 2
+
+bindingAdd Push i cubeMove right $$cube_depth 1
+bindingAdd Push k cubeMove right $$cube_depth -1
+bindingAdd Push j cubeMove front $$cube_depth -1
+bindingAdd Push l cubeMove front $$cube_depth 1
+bindingAdd Push u cubeMove up $$cube_depth 1
+bindingAdd Push o cubeMove up $$cube_depth -1
+
+bindingAdd Push 0 cubeShuffle 15
+bindingAdd Push 9 cubeSolveCross
+bindingAdd Push 8 cubeSolveCorners
+bindingAdd Push 7 cubeSolveMiddleLayer
+bindingAdd Push 6 cubeSolveBottomCross
+bindingAdd Push 5 cubeSolveBottomCorners
+bindingAdd Push 4 cubeSolveBottomCubeCorners
+bindingAdd Push 3 cubeSolveBottomEdges
+
+bindingAdd Push m cubeMirrorStart
+bindingAdd Push n cubeMirrorStop
+bindingAdd Push KeySpace cubeMirrorGrabCurrentFace
+
+bindingAdd Push z cubeSaveFaces cube_saved_faces.xml
+bindingAdd Push x cubeLoadFaces cube_saved_faces.xml
+
+bindingAdd Push w set orbit_camera_elevation_change +1
+bindingAdd Release w set orbit_camera_elevation_change 0
+bindingAdd Push s set orbit_camera_elevation_change -1
+bindingAdd Release s set orbit_camera_elevation_change 0
+
+bindingAdd Push d set orbit_camera_azimuth_change -1
+bindingAdd Release d set orbit_camera_azimuth_change 0
+bindingAdd Push a set orbit_camera_azimuth_change +1
+bindingAdd Release a set orbit_camera_azimuth_change 0
+
+bindingAdd Push q set orbit_camera_radius_change -1
+bindingAdd Release q set orbit_camera_radius_change 0
+bindingAdd Push e set orbit_camera_radius_change +1
+bindingAdd Release e set orbit_camera_radius_change 0
+
+
+set orbit_camera_radius 2.0
+set orbit_camera_elevation 0.0
+set orbit_camera_azimuth 90.0
+
+set orbit_camera_max_elevation 70.0
+set orbit_camera_min_radius 1.0
+set orbit_camera_max_radius 4.0
+
+set orbit_camera_angle_increase_factor 180.0
+set orbit_camera_angle_decay_factor 45.0
+
+set orbit_camera_radius_increase_factor 0.5
+set orbit_camera_radius_decay_factor 0.1
+
+
+set cube_rotation_speed 5.0
+
+cubeMirrorLoadCalibration data/rubikal_calibration.xml
+
+
+
+
+

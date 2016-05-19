@@ -1,0 +1,80 @@
+//!pragma section common
+//KernelImageProcessor
+#version 130
+
+//!pragma section varying 
+vec2 texture_coordinate;
+
+//!pragma section vertex
+//!pragma include VertexShader.vsh
+
+//!pragma section fragment
+//!pragma default texture_0 0
+
+uniform vec2 pixel_size;
+uniform sampler2D texture_0;
+
+float kernel0_array[ $kernel_array_size$ ] = float[]( $kernel0_array$ );
+float kernel1_array[ $kernel_array_size$ ] = float[]( $kernel1_array$ );
+
+out vec4 result;
+void main()
+{
+	vec4 sum0 = vec4(0.0, 0.0, 0.0, 0.0);
+	vec4 sum1 = vec4(0.0, 0.0, 0.0, 0.0);
+	int position = 0;
+	
+	float kernel0_sum = 0.0;
+	float kernel1_sum = 0.0;
+	
+$convolution_1d_begin$
+	for (int i = -$kernel_half_size$; i <= $kernel_half_size$; ++i)
+	{
+		vec4 pixel_x = texture2D(texture_0, texture_coordinate + vec2(float(i), 0.0) * pixel_size);
+		vec4 pixel_y = texture2D(texture_0, texture_coordinate + vec2(0.0, float(i)) * pixel_size);
+		
+		sum0 += pixel_x * kernel0_array[position];
+		kernel0_sum += kernel0_array[position];
+		
+		sum1 += pixel_y * kernel1_array[position];
+		kernel1_sum += kernel1_array[position];
+		position++;	
+	}
+$convolution_1d_end$
+	
+$convolution_2d_begin$
+	for (int y = -$kernel_half_size$; y <= $kernel_half_size$; ++y)
+	{
+		for (int x = -$kernel_half_size$; x <= $kernel_half_size$; ++x)
+		{
+			vec4 pixel = texture2D(texture_0, texture_coordinate + vec2(float(x), float(y)) * pixel_size);
+			
+			sum0 += pixel * kernel0_array[position];
+			kernel0_sum += kernel0_array[position];
+			
+			sum1 += pixel * kernel1_array[position];
+			kernel1_sum += kernel1_array[position];
+			position++;
+		}		
+	}
+$convolution_2d_end$
+
+	if (kernel0_sum <= 0.0)
+	{
+		kernel0_sum = 1.0;
+	}
+
+	if (kernel1_sum <= 0.0)
+	{
+		kernel1_sum = 1.0;
+	}
+	
+	sum0 /= kernel0_sum;
+	sum1 /= kernel1_sum;
+
+	vec4 sum = abs(sum0) + abs(sum1);
+	
+	clamp(sum, vec4(0.0, 0.0, 0.0, 0.0), vec4(1.0, 1.0, 1.0, 1.0));	
+	sum.a = 1.0f;
+	result = sum;
+}

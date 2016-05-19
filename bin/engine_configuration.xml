@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<root>
+    <core_engine_configuration>
+    
+        <window_width>800</window_width>
+        <window_height>600</window_height>
+        <fullscreen>0</fullscreen>
+        <vsync>1</vsync>
+                
+        <console_background>data/images/console.bmp</console_background>
+        <console_floating_background>data/images/console_back.bmp</console_floating_background>
+        <console_number_of_lines>50</console_number_of_lines>
+        <console_effect>data/shaders/core/Console.eff</console_effect>
+                
+        <text_effect>data/shaders/core/Text.eff</text_effect>
+    	
+    	<location_table>
+    	    <element>
+    			<key> image_processing_copy </key>
+    			<value> <node.text> data/shaders/image_processing/Copy.eff </node.text> </value>
+    		</element>
+    		<element>
+    			<key> image_processing_grayscale </key>
+    			<value> <node.text> data/shaders/image_processing/Grayscale.eff </node.text> </value>
+    		</element>
+    		 <element>
+    			<key> image_processing_threshold </key>
+    			<value> <node.text> data/shaders/image_processing/Threshold.eff </node.text> </value>
+    		</element>
+    		<element>
+    			<key> image_processing_binarization </key>
+    			<value> <node.text> data/shaders/image_processing/Binarization.eff </node.text> </value>
+    		</element>
+    		 <element>
+    			<key> image_processing_kernel </key>
+    			<value> <node.text> data/shaders/image_processing/Kernel.eff </node.text> </value>
+    		</element>
+    		 <element>
+    			<key> image_processing_separable_kernel </key>
+    			<value> <node.text> data/shaders/image_processing/SeparableKernel.eff </node.text> </value>
+    		</element>
+    	</location_table>
+    	
+    </core_engine_configuration>
+</root>

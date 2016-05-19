@@ -1,0 +1,29 @@
+//!pragma section common
+// ThresholdImageProcessor
+#version 130
+
+//!pragma section varying 
+vec2 texture_coordinate;
+
+//!pragma section vertex
+//!pragma include VertexShader.vsh
+
+//!pragma section fragment
+//!pragma default texture_0 0
+
+uniform sampler2D texture_0;
+uniform vec4 threshold_value;
+uniform float threshold;
+
+out vec4 frag_color;
+void main()
+{
+	vec4 color = texture2D(texture_0, texture_coordinate);
+	
+	if (color.r < threshold)
+	{
+		color = threshold_value;
+	}
+	
+	frag_color = color;
+}

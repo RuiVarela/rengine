@@ -1,0 +1,67 @@
+name: level 1
+type: puzzle
+figure_spacing: 4
+speed[0]: 2.0
+speed[1]: 1.0
+speed[2]: 0.5
+speed_increment_per_second[0]: -0.1
+speed_increment_per_second[1]: -0.1
+speed_increment_per_second[2]: -0.1
+speed_max: 0.5
+clear_factor[0]: 0.1
+clear_factor[1]: 0.2
+clear_factor[2]: 0.3
+score_factor[0]: 1.0
+score_factor[1]: 1.2
+score_factor[2]: 2.3
+bonus[0]: 100
+bonus[1]: 120
+bonus[2]: 130
+
+figure: ryven
+figure: peter
+
+#
+
+name: level 2
+type: puzzle
+figure_spacing: 3
+speed[0]: 2.0
+
+figure: figure_1
+figure: figure_2
+
+#
+
+name: level 3
+type: puzzle
+figure_spacing: 2
+speed[0]: 2.0
+
+figure: ryven
+figure: peter
+figure: figure_1
+figure: figure_2
+figure: figure_3
+
+#
+
+name: level 4
+type: random puzzle
+figure_spacing: 2
+speed[0]: 1.0
+speed_increment_per_second[0]: -0.01
+total_figures: 10
+
+#
+
+name: level 5
+type: continuous
+speed[0]: 1.0
+
+figure: continuous test figure 1
+figure: continuous test figure 1
+figure: continuous test figure 1
+
+#
+

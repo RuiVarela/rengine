@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.eclipse.cdt.ui.text.templates.c" deleted="false" description="Create New Unit Test" enabled="true" name="utt">//
+// ${name}
+//
+
+UNITT_TEST_BEGIN_CLASS(${name})
+
+	virtual void run()
+	{
+		${cursor}
+	}
+
+UNITT_TEST_END_CLASS(${name})</template></templates>

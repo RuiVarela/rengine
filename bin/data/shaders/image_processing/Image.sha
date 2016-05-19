@@ -1,0 +1,12 @@
+//
+// Image Function Library
+//
+
+
+//
+// Calculate the luminance value of a rbg color
+//
+float luminance(in vec3 color)
+{
+	return 0.3 * color.r + 0.59 * color.g + 0.11 * color.b;
+}

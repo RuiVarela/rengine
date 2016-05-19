@@ -1,0 +1,53 @@
+echo Enforcing sega settings
+
+set sega_system_addr_error 1
+set sega_system_force_dtack 0
+set sega_system_lock_on 3
+set sega_system_region_detect 0
+set sega_system_romtype 0
+set sega_system_tmss 0
+
+set sega_input_port[0] 1
+set sega_input_port[1] 1
+
+set sega_input_input[0].padtype 1
+
+bindingAdd Push w set sega_input_input[0].up 1
+bindingAdd Push s set sega_input_input[0].down 1
+bindingAdd Push a set sega_input_input[0].left 1
+bindingAdd Push d set sega_input_input[0].right 1
+bindingAdd Push j set sega_input_input[0].a 1
+bindingAdd Push k set sega_input_input[0].b 1
+bindingAdd Push l set sega_input_input[0].c 1
+bindingAdd Push u set sega_input_input[0].x 1
+bindingAdd Push i set sega_input_input[0].y 1
+bindingAdd Push o set sega_input_input[0].z 1
+bindingAdd Push KeyBackSpace set sega_input_input[0].mode 1
+bindingAdd Push KeyReturn set sega_input_input[0].start 1
+
+bindingAdd Release w set sega_input_input[0].up 0
+bindingAdd Release s set sega_input_input[0].down 0
+bindingAdd Release a set sega_input_input[0].left 0
+bindingAdd Release d set sega_input_input[0].right 0
+bindingAdd Release j set sega_input_input[0].a 0
+bindingAdd Release k set sega_input_input[0].b 0
+bindingAdd Release l set sega_input_input[0].c 0
+bindingAdd Release u set sega_input_input[0].x 0
+bindingAdd Release i set sega_input_input[0].y 0
+bindingAdd Release o set sega_input_input[0].z 0
+bindingAdd Release KeyBackSpace set sega_input_input[0].mode 0
+bindingAdd Release KeyReturn set sega_input_input[0].start 0
+
+bindingAdd Push KeyTab segaHardReset
+bindingAdd Push KeyF7 segaLoadGameState
+bindingAdd Push KeyF8 segaSaveGameState
+bindingAdd Push KeyF10 segaSoftReset
+bindingAdd Push KeyF11 segaToggleBorderEmulation
+
+
+
+
+
+
+
+

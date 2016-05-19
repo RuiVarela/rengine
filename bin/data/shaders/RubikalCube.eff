@@ -1,0 +1,34 @@
+//!pragma section common
+#version 130
+
+//!pragma section varying 
+vec4 color;
+
+//!pragma section vertex
+
+//!pragma semantic input_position position
+//!pragma semantic input_color color
+
+uniform mat4 model_view_projection[3];
+
+in vec4 input_color;
+in vec3 input_position;
+
+void main()
+{			
+	mat4 model_view = model_view_projection[1] * model_view_projection[0];
+	
+	// calculate position in eye space
+	vec4 position = model_view * vec4(input_position, 1.0);
+	
+	color = input_color;
+			
+	gl_Position = model_view_projection[2] * position;
+}
+
+//!pragma section fragment
+out vec4 frag_color;
+void main()
+{
+	frag_color = color;
+}

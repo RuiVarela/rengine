@@ -1,0 +1,10 @@
+ECHO OFF
+SET DEBUG_VALUE=ON
+SET DIR_SOURCE=source\
+SET DIR_BUILD=win_eclipse_build
+
+IF NOT EXIST %DIR_BUILD% MKDIR %DIR_BUILD%
+
+cd %DIR_BUILD%
+cmake -G "Eclipse CDT4 - MinGW Makefiles" ..\%DIR_SOURCE% -DRENGINE_DEBUG=%DEBUG_VALUE%
+cd ..

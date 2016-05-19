@@ -1,0 +1,18 @@
+/**
+ *
+ * base.shd begin
+ *
+ **/
+
+//!pragma include ../root.shd
+
+float dummy_pipe(float one)
+{
+	return one;
+}
+
+/**
+ *
+ * base.shd end
+ *
+ **/

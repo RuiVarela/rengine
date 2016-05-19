@@ -1,0 +1,44 @@
+//!pragma section common
+// simple
+#version 120
+
+//!pragma section vertex
+uniform vec4 input_color;
+uniform mat4 modelViewProjection[3]; // [0] Model Matrix. [1] View Matrix. [2] Projection Matrix
+uniform float uni_a, uni_b, uni_c[3];
+uniform vec2 v2_a,//dummy one 
+			 v2_b,//dummy two
+			 v2_c;// three dummy
+uniform vec3 v3_a;
+uniform vec4 v4_a;
+uniform ivec2 iv2_a;
+uniform ivec3 iv3_a;
+uniform ivec4 iv4_a;
+
+void main()
+{			
+	vec4 position = gl_Vertex;
+	//position = modelViewProjection[0] * position;
+	//position = modelViewProjection[1] * position;
+	//position = modelViewProjection[2] * position;
+	
+	mat4 mvp = modelViewProjection[2] * modelViewProjection[1] * modelViewProjection[0];
+	position = mvp * position;
+	
+	gl_Position = position;
+//	gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+}
+
+//!pragma section fragment
+uniform vec4 input_color;
+uniform float time;
+
+void main()
+{
+	float alpha_factor = 0.5 + sin(time * 2.0) * 0.5;
+
+	vec4 color = input_color;
+	color.a = 1.0 - alpha_factor;
+		
+	gl_FragColor = color;
+}

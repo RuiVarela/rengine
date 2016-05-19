@@ -1,0 +1,132 @@
+#include "UnitTest.h"
+
+#include <iostream>
+
+//
+// Test With No Helpers
+//
+
+struct ExampleTest00: public UnitTest::TestCase
+{
+	virtual std::string name() const
+	{
+		return "ExampleTest00";
+	}
+
+	virtual void pre()
+	{
+		std::cout << name() <<  " pre()." << std::endl;
+	}
+
+	virtual void post()
+	{
+		std::cout << name() <<  " post()." << std::endl;
+	}
+
+	virtual void run()
+	{
+		std::cout << name() <<  " run()." << std::endl;
+	}
+};
+
+static UnitTest::TestCaseAutoRegister<ExampleTest00>testExampleTest00;
+
+//
+// With "name" helper and UNITT_TEST_ADD
+//
+
+struct ExampleTest01 : public UnitTest::TestCase
+{
+	UNITT_NAME_TEST_CASE(ExampleTest01);
+
+	virtual void pre() { }
+	virtual void post() { }
+
+	virtual void run()
+	{
+		std::cout << name() <<  " run()." << std::endl;
+	}
+};
+
+UNITT_TEST_ADD(ExampleTest01);
+
+//
+// With class declaration, name , class end and auto register
+//
+
+UNITT_TEST_BEGIN_CLASS(ExampleTest02);
+virtual void run()
+{
+	std::cout << name() << " run()." << std::endl;
+}
+UNITT_TEST_END_CLASS(ExampleTest02);
+
+
+//
+// Simplest way
+//
+
+UNITT_TEST_BEGIN(ExampleTest03)
+{
+	std::cout << name() << " run()." << std::endl;
+}
+UNITT_TEST_END(ExampleTest03)
+
+UNITT_TEST_BEGIN(Example04)
+{
+	UNITT_ASSERT(true);
+}
+UNITT_TEST_END(Example04)
+
+UNITT_TEST_BEGIN(Example05)
+{
+	UNITT_FAIL("Example05 will fail");
+}
+UNITT_TEST_END(Example05)
+
+UNITT_TEST_BEGIN(Example06)
+{
+	UNITT_FAIL_IF(true, "Example06 will fail");
+}
+UNITT_TEST_END(Example06)
+
+UNITT_TEST_BEGIN(Example07)
+{
+	UNITT_FAIL_IF(false, "Example07 will pass");
+}
+UNITT_TEST_END(Example07)
+
+//
+// Example08
+//
+
+UNITT_TEST_BEGIN(Example08)
+{
+	UNITT_FAIL_NOT_EQUAL(4, 4);
+}
+UNITT_TEST_END(Example08)
+
+//
+// Example09
+//
+
+UNITT_TEST_BEGIN(Example09)
+{
+	UNITT_FAIL_NOT_EQUAL(1, 2);
+}
+UNITT_TEST_END(Example09)
+
+//
+// Example10
+//
+
+UNITT_TEST_BEGIN(Example10)
+{
+	UNITT_FAIL_NOT_EQUAL(1.0, 1.0);
+	UNITT_FAIL_NOT_EQUAL(2.0f, 2.0f);
+	UNITT_FAIL_NOT_EQUAL(3, 3);
+	UNITT_FAIL_NOT_EQUAL("One", "One");
+	UNITT_FAIL_NOT_EQUAL("One", "Two");
+
+}
+UNITT_TEST_END(Example10)

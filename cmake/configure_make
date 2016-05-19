@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DEBUG_VALUE=OFF
+DIR_SOURCE=source/
+DIR_BUILD=make_build
+
+TARGET=${DIR_BUILD}
+
+if [ ! -d ${DIR_BUILD} ]; then
+	mkdir ${DIR_BUILD}
+fi
+
+cd ${DIR_BUILD}
+cmake -G "Unix Makefiles" ../${DIR_SOURCE} -DRENGINE_DEBUG=${DEBUG_VALUE}
+cd ..
+

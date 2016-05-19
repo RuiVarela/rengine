@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<Red_Histogram type_id="opencv-hist">
+  <is_uniform>1</is_uniform>
+  <have_ranges>1</have_ranges>
+  <mat type_id="opencv-nd-matrix">
+    <sizes>
+      16</sizes>
+    <dt>f</dt>
+    <data>
+      0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 1.14070761 255. 92.29361725</data></mat>
+  <thresh>
+    0. 180.</thresh></Red_Histogram>
+<Red_Color>
+  0. 0. 255.</Red_Color>
+<Red_HSV_Min>
+  134. 191. 100.</Red_HSV_Min>
+<Red_HSV_Max>
+  180. 256. 256.</Red_HSV_Max>
+<Yellow_Histogram type_id="opencv-hist">
+  <is_uniform>1</is_uniform>
+  <have_ranges>1</have_ranges>
+  <mat type_id="opencv-nd-matrix">
+    <sizes>
+      16</sizes>
+    <dt>f</dt>
+    <data>
+      1.84098482 255. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.18881896
+      0.75527585 0.56645685</data></mat>
+  <thresh>
+    0. 180.</thresh></Yellow_Histogram>
+<Yellow_Color>
+  0. 255. 255.</Yellow_Color>
+<Yellow_HSV_Min>
+  10. 149. 44.</Yellow_HSV_Min>
+<Yellow_HSV_Max>
+  35. 255. 256.</Yellow_HSV_Max>
+<Orange_Histogram type_id="opencv-hist">
+  <is_uniform>1</is_uniform>
+  <have_ranges>1</have_ranges>
+  <mat type_id="opencv-nd-matrix">
+    <sizes>
+      16</sizes>
+    <dt>f</dt>
+    <data>
+      255. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.83881581</data></mat>
+  <thresh>
+    0. 180.</thresh></Orange_Histogram>
+<Orange_Color>
+  0. 140. 255.</Orange_Color>
+<Orange_HSV_Min>
+  0. 165. 168.</Orange_HSV_Min>
+<Orange_HSV_Max>
+  10. 255. 255.</Orange_HSV_Max>
+<White_Histogram type_id="opencv-hist">
+  <is_uniform>1</is_uniform>
+  <have_ranges>1</have_ranges>
+  <mat type_id="opencv-nd-matrix">
+    <sizes>
+      16</sizes>
+    <dt>f</dt>
+    <data>
+      0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.</data></mat>
+  <thresh>
+    0. 180.</thresh></White_Histogram>
+<White_Color>
+  255. 255. 255.</White_Color>
+<White_HSV_Min>
+  0. 0. 192.</White_HSV_Min>
+<White_HSV_Max>
+  18. 137. 255.</White_HSV_Max>
+<Blue_Histogram type_id="opencv-hist">
+  <is_uniform>1</is_uniform>
+  <have_ranges>1</have_ranges>
+  <mat type_id="opencv-nd-matrix">
+    <sizes>
+      16</sizes>
+    <dt>f</dt>
+    <data>
+      0.05900046 0. 0. 0. 0. 0. 0. 0. 0.11800092 15.69412327 255.
+      46.96436691 0.17700139 0. 0. 0.</data></mat>
+  <thresh>
+    0. 180.</thresh></Blue_Histogram>
+<Blue_Color>
+  255. 0. 0.</Blue_Color>
+<Blue_HSV_Min>
+  111. 0. 35.</Blue_HSV_Min>
+<Blue_HSV_Max>
+  130. 255. 255.</Blue_HSV_Max>
+<Green_Histogram type_id="opencv-hist">
+  <is_uniform>1</is_uniform>
+  <have_ranges>1</have_ranges>
+  <mat type_id="opencv-nd-matrix">
+    <sizes>
+      16</sizes>
+    <dt>f</dt>
+    <data>
+      0.08617777 0. 0. 0.25853330 97.20851898 255. 71.52754211
+      10.77222061 3.36093283 1.46502197 0.25853330 0.08617777 0. 0. 0.
+      0.</data></mat>
+  <thresh>
+    0. 180.</thresh></Green_Histogram>
+<Green_Color>
+  0. 255. 0.</Green_Color>
+<Green_HSV_Min>
+  28. 30. 22.</Green_HSV_Min>
+<Green_HSV_Max>
+  104. 255. 255.</Green_HSV_Max>
+</opencv_storage>

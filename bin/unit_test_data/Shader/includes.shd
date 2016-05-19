@@ -1,0 +1,13 @@
+/**
+ *
+ * includes.shd begin
+ *
+ **/
+
+//!pragma include test/math.shd
+
+/**
+ *
+ * includes.shd end
+ *
+ **/

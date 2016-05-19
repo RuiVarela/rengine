@@ -1,0 +1,18 @@
+/**
+ *
+ * math.shd begin
+ *
+ **/
+
+//!pragma include base.shd
+
+float dummy_add(float one, float another)
+{
+	return one + another;
+}
+
+/**
+ *
+ * math.shd end
+ *
+ **/

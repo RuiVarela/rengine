@@ -1,0 +1,27 @@
+//!pragma section common
+
+//this is a common section for all shaders begin
+//!pragma include includes.shd
+//this is a common section for all shaders end
+
+//!pragma section vertex
+
+void main()
+{
+	vec4 color = vec4(1.0, 0.0, 0.0, 1.0);
+	gl_FragColor = color;
+}
+
+//!pragma section fragment
+//!pragma include root.shd
+uniform vec3 pin_position;
+
+void main()
+{
+	vec4 vertex = gl_Vertex;
+	vertex.x += pin_position.x;
+	vertex.y += pin_position.y;
+	vertex.z += pin_position.z;
+	
+	gl_Position = gl_ModelViewProjectionMatrix * (gl_Vertex + vec4(pin_position, 1.0));
+}

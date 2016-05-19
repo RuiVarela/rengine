@@ -1,0 +1,31 @@
+//!pragma section common
+// BinarizationImageProcessor
+#version 130
+
+//!pragma section varying 
+vec2 texture_coordinate;
+
+//!pragma section vertex
+//!pragma include VertexShader.vsh
+
+//!pragma section fragment
+//!pragma default texture_0 0
+uniform sampler2D texture_0;
+uniform float threshold;
+
+out vec4 frag_color;
+void main()
+{
+	vec4 color = texture2D(texture_0, texture_coordinate);
+	
+	if (color.r < threshold)
+	{
+		color.rgb = vec3(0.0, 0.0, 0.0);
+	}
+	else
+	{
+		color.rgb = vec3(1.0, 1.0, 1.0);
+	}
+	
+	frag_color = color;
+}

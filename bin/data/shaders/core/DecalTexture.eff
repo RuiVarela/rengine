@@ -1,0 +1,34 @@
+//!pragma section common
+// DecalTexture.eff
+// Decal Texture with color mask
+#version 130
+
+//!pragma default color 1.0, 1.0, 1.0, 1.0
+
+//!pragma semantic input_position position
+//!pragma semantic input_texture_coords texcoords
+
+//!pragma section varying 
+vec2 texture_coordinate; 
+
+//!pragma section vertex
+uniform mat4 mvp; //projection * view * model
+
+in vec3 input_position;
+in vec2 input_texture_coords;
+void main()
+{			
+	texture_coordinate = input_texture_coords;
+	gl_Position = mvp * vec4(input_position, 1.0);
+}
+
+//!pragma section fragment
+uniform sampler2D texture;
+uniform vec4 color;
+
+out vec4 frag_color;
+void main()
+{
+	vec4 texture_color = texture2D(texture, texture_coordinate);
+	frag_color = texture_color * color;
+}

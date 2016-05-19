@@ -1,0 +1,67 @@
+//!pragma section common
+// BasicEffect
+#version 130
+
+//!pragma default diffuse_color 1.0, 0.0, 0.0, 1.0
+//!pragma default specular_color 0.0, 1.0, 0.0, 1.0
+//!pragma default light_direction 0.0, 0.0, -1.0, 0.0
+
+//!pragma semantic input_position position
+//!pragma semantic input_normal normal
+
+//!pragma section varying 
+vec3 normal;
+vec3 light_vector;
+vec3 eye_vector;
+vec3 reflection_vector;
+
+//!pragma section vertex
+uniform mat4 model_view_projection[3];
+uniform vec4 light_direction;
+
+in vec3 input_position;
+in vec3 input_normal;
+void main()
+{			
+	mat4 model_view = model_view_projection[1] * model_view_projection[0];
+	
+	// calculate position in eye space
+	vec4 position = model_view * vec4(input_position, 1.0);
+	
+	// calculate normal in eye space
+	normal = normalize( (model_view * vec4(input_normal, 0.0)).xyz );
+	
+	// calculate light direction on eye space, and invert it
+	light_vector = (model_view_projection[1] * light_direction).xyz;
+	light_vector = -light_vector;
+	
+	// calculate eye vector
+	eye_vector = normalize(-position.xyz);
+	
+	// calculate the reflection vector
+	reflection_vector = reflect(-light_vector, normal);
+
+	gl_Position = model_view_projection[2] * position;
+}
+
+//!pragma section fragment
+uniform vec4 specular_color;
+uniform vec4 diffuse_color;
+
+
+out vec4 frag_diffuse_color;
+out vec4 frag_specular_color;
+void main()
+{
+	float diffuse = max( dot(normalize(light_vector), normalize(normal)) , 0.0);
+
+    float specular = 0.0;     
+    if (diffuse > 0.0) 
+    { 
+    	specular = max(dot( normalize(reflection_vector), normalize(eye_vector) ), 0.0); 
+    	specular = pow(specular, 16.0); 
+    } 
+        	
+	frag_diffuse_color = diffuse_color * diffuse * 0.5;
+	frag_specular_color = specular_color * specular * 0.5;
+}

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DEBUG_VALUE=ON
+DIR_SOURCE=source/
+DIR_BUILD=eclipse_build
+
+TARGET=${DIR_BUILD}
+
+if [ ! -d ${DIR_BUILD} ]; then
+	mkdir ${DIR_BUILD}
+fi
+
+cd ${DIR_BUILD}
+cmake -G "Eclipse CDT4 - Unix Makefiles" ../${DIR_SOURCE} -DRENGINE_DEBUG=${DEBUG_VALUE}
+cd ..
+

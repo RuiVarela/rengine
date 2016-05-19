@@ -1,0 +1,24 @@
+bindingAdd Push MouseLeftButton echo Push MouseLeftButton
+bindingAdd Push MouseMiddleButton echo Push MouseMiddleButton
+bindingAdd Push MouseRightButton echo Push MouseRightButton
+
+bindingAdd Release MouseLeftButton echo Release MouseLeftButton
+bindingAdd Release MouseMiddleButton echo Release MouseMiddleButton
+bindingAdd Release MouseRightButton echo Release MouseRightButton
+
+bindingAdd Scroll ScrollUp echo Scroll ScrollUp
+bindingAdd Scroll ScrollDown echo Scroll ScrollDown
+
+bindingAdd Push a echo Push a
+bindingAdd Push B echo Push B
+bindingAdd Push c echo Push c
+bindingAdd Push KeyF1 echo Push KeyF1
+bindingAdd Push KeyF2 echo Push KeyF2
+bindingAdd Push KeyF3 echo Push KeyF3
+
+bindingAdd Release a echo Release a
+bindingAdd Release B echo Release B
+bindingAdd Release c echo Release c
+bindingAdd Release KeyF1 echo Release KeyF1
+bindingAdd Release KeyF2 echo Release KeyF2
+bindingAdd Release KeyF3 echo Release KeyF3
