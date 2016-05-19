@@ -7,8 +7,7 @@ Rui Varela - rui.filipe.varela@gmail.com
 I may have used code that was not mine... sorry
 
 
-Engine Progress
-~~~~~~~~~~~~~~~
+#Engine Progress
 [xx.xx.xx] -- Image Processing System
 [xx.xx.xx] -- Post Processing Units
 [xx.xx.xx] -- Spline Lib and NURBS
@@ -198,8 +197,7 @@ Engine Progress
 [15.03.08] -- Boost Libs (SharedPointer, XML serialization) were replaced by smokin lightweight libs.
 [xx.xx.xx] -- I should have begun reporting engine status a long long time ago...
 
-Notes on Effect System
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Notes on Effect System
 An effect file contains the source needed for the corresponding shaders (VertexShader, FragmentShader). The source is organized in sections.
 A section starts with //!pragma section [common, vertex, fragment, varying], only one whitespace is allowed between tokens.
 The following are valid:
@@ -241,8 +239,7 @@ The engine allows semantic binding, to allow out of order channel binding, the /
 //!pragma semantic input_color color
 At runtime the engine will bind the vertex shader input "input_color" to a VertexBufferObject data channel with the same semantic (Color)
 
-Error Codes
-~~~~~~~~~~~
+# Error Codes
 001XX Image
 002XX CharMap
 003XX Console
@@ -251,41 +248,41 @@ Error Codes
 006XX Text
 1XXXX Application Range
 
-Third Party Source Code
-~~~~~~~~~~~~~~~~~~~~~~~~
+# Third Party Source Code
 - OpenGL Extension Wrangler Library (GLEW) - http://glew.sourceforge.net/ - BSD License
 - 3ds - ATI SDK - No License
 - stb_image.c - http://nothings.org/ - Public Domain
 - tinyxml - http://www.grinninglizard.com/tinyxml/ - Permissive License
 
-Preprocessor definitions
-~~~~~~~~~~~~~~~~~~~~~~~~
+# Preprocessor definitions
 #define _CRT_SECURE_NO_DEPRECATE //windows
 #define GLEW_STATIC
 #define XRANDR_EXTENSIONS // to enable X11 resolution change (if defined you must link with Xrandr)
 
-Notes
-~~~~~
+# Notes
 - 3ds is not thread safe!
 - Copywrite symbol on each file :  // __!!rengine_copyright!!__ //
 
-Eclipse IDE
-~~~~~~~~~~~
+# Eclipse IDE
 - Aditional Include Dirs	"${workspace_loc:/librengine/include}"
 - Aditional Link Dirs		"${workspace_loc:/librengine/[Debug,Release].[Win32,Linux]}"
 - Link Libs					rengine GL X11 Xrandr
 
-CoreDumps on linux
-~~~~~~~~~~~~~~~~~
-- ulimit -c unlimited
+# CoreDumps on linux
+```shell
+ulimit -c unlimited
+```
 
-valgrind
-~~~~~~~~
+# valgrind
 Generate supression :
+```shell
 valgrind --gen-suppressions=all --log-file=dump.txt --leak-check=full --error-limit=no -v glxgears
-cat dump.txt | valgrind_supressor > opengl.supp
+cat dump.txt | valgrind_supressor > opengl.supp~
+```
 
 run with supressions
+```shell
 valgrind --gen-suppressions=all --log-file=dump.txt --leak-check=full --suppressions=opengl.supp --error-limit=no -v glxgears
+```
 
 
