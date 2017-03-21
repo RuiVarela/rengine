@@ -232,8 +232,9 @@ One can include source code from another file with pragma include. This pragma r
 ~~~
 
 Lines starting with uniform, will allow uniform's name autodetection. They will be available on C++ code with no further effort.
+~~~
 uniform vec4 color;
-
+~~~
 Uniforms present in the effect file are auto-discovered and are added to the Program object. Auto-Discover currently supports:
 ~~~
 float, vec2, vec3, vec4
