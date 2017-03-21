@@ -31,7 +31,7 @@ I may have used code that was not mine... sorry
 [06.10.11] -- Inital (non working) implementation for Altlas Generator
 [23.09.11] -- Backward compatability with OpenGL 2.1
            -- GLSL is rewritten according to this gl version
-		   -- Window creation fallback for non supported extensions
+	   -- Window creation fallback for non supported extensions
 [22.09.11] -- Logs now use the same file until a file size threshold is reached
 [20.07.11] -- Added Support for True Type Fonts using stb_truetype
 [22.02.11] -- Probably fixed AL compiler error on mac
@@ -102,14 +102,14 @@ I may have used code that was not mine... sorry
 [24.09.09] -- Effect Support, FragmentShader and VertexShader on the same file
 [23.09.09] -- GLSL shader support development, ShaderUnit Draw State, ShaderResourceLoader...
 [22.09.09] -- Started to port the engine to OpenGl 3.[0,3]
-		   -- VertexBufferObject implementation, this will be the main drawing object (No more immediate mode, display list, draw array)
-		   -- VertexBuffer class implementation to store vertex data
-		   -- DisplayListDraw was replaced by StaticDraw
-		   -- ArraysDraw was replace by DynamicDraw
+           -- VertexBufferObject implementation, this will be the main drawing object (No more immediate mode, display list, draw array)
+           -- VertexBuffer class implementation to store vertex data
+           -- DisplayListDraw was replaced by StaticDraw
+           -- ArraysDraw was replace by DynamicDraw
 [05.08.09] -- Several improvements have been done for the past months:
-		   -- DrawStates improvements, TextureUnit DrawState, Inital shader support, Rubikal application, engine port to win32
+           -- DrawStates improvements, TextureUnit DrawState, Inital shader support, Rubikal application, engine port to win32
 [20.04.09] -- System Variable expansion implementation: "/echo $copyright" will expand copyright to variable value.
-		   -- to escape a variable one should repeate the expansion prefix "/echo $$copyright" will echo $copyright
+           -- to escape a variable one should repeate the expansion prefix "/echo $$copyright" will echo $copyright
 [20.04.09] -- InputBinder bugfix, now supports integer keys [1, 2 ,3 ..] correctly.
 [11.04.09] -- SystemScript development for basic automation. SystemScriptResourceLoader and System integration. Scripts are cached for performance.
 [10.04.09] -- Finished EventBinder, exposes bindingAdd, bindingList and bindingClear system commands. 
