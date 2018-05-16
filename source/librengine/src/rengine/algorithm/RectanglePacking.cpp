@@ -6,6 +6,8 @@
 #include <iostream>
 #include <cassert>
 #include <algorithm>
+#include <limits>
+#include <memory.h>
 
 using namespace std;
 

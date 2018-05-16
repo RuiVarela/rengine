@@ -96,6 +96,13 @@ namespace rengine
 	private:
 	};
 
+	class VertexArrayObject : public DrawResource
+	{
+	public:
+		VertexArrayObject();
+	private:
+	};
+
 
 	//
 	// implementation
@@ -126,6 +133,10 @@ namespace rengine
 	}
 
 	RENGINE_INLINE VertexBufferObject::VertexBufferObject()
+	{
+	}
+
+	RENGINE_INLINE VertexArrayObject::VertexArrayObject()
 	{
 	}
 }

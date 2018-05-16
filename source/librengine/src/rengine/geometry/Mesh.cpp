@@ -37,15 +37,33 @@ namespace rengine
 		return bounding_box_;
 	}
 
-	void Mesh::prepareDrawing(RenderEngine& render_engine)
-	{
+	void Mesh::prepareDrawing(RenderEngine &render_engine) {
+		if (needs_prepare_rendering) {
+			//
+			// build the vertex array buffer
+			//
+			render_engine.loadVertexArrayObject(vertex_array_object_);
+		}
+
+		render_engine.bindVertexArrayObject(vertex_array_object_);
+
 		//
 		// build the vertex buffers objects
 		//
-		render_engine.loadVertexBufferObject(vertex_vbo_,  *this, drawMode());
-		if (numberOfIndexes() > 0)
-		{
-			render_engine.loadIndexBufferObject(indexes_vbo_,  indexes_, drawMode());
+		render_engine.loadVertexBufferObject(vertex_vbo_, *this, drawMode());
+
+		if (numberOfIndexes() > 0) {
+			render_engine.loadIndexBufferObject(indexes_vbo_, indexes_, drawMode());
+		}
+
+		if (needs_prepare_rendering) {
+			//
+			// bind vbo
+			//
+			render_engine.bindVertexBufferObject(vertex_vbo_, *this);
+			if (numberOfIndexes() > 0) {
+				render_engine.bindIndexBufferObject(indexes_vbo_, indexes_);
+			}
 		}
 
 		needs_prepare_rendering = false;
@@ -56,28 +74,20 @@ namespace rengine
 	{
 		render_engine.unloadVertexBufferObject(vertex_vbo_);
 		render_engine.unloadVertexBufferObject(indexes_vbo_);
+		render_engine.unloadVertexArrayObject(vertex_array_object_);
 	}
 
-	void Mesh::draw(RenderEngine& render_engine)
-	{
-		if (needs_prepare_rendering || (needs_data_refresh && drawMode() != StaticDraw) )
-		{
+	void Mesh::draw(RenderEngine &render_engine) {
+		if (needs_prepare_rendering || (needs_data_refresh && drawMode() != StaticDraw)) {
 			prepareDrawing(render_engine);
 		}
 
 
-		render_engine.bindVertexBufferObject(vertex_vbo_,  *this);
-		if (numberOfIndexes() > 0)
-		{
-			render_engine.bindIndexBufferObject(indexes_vbo_,  indexes_);
-			render_engine.drawVertexBufferObject(vertex_vbo_, *this, indexes_vbo_, indexes_);
-			render_engine.unbindIndexBufferObject(indexes_vbo_,  indexes_);
+		if (numberOfIndexes() > 0) {
+			render_engine.drawVertexArrayObject(vertex_array_object_, indexes_);
+		} else {
+			render_engine.drawVertexArrayObject(vertex_array_object_, *this);
 		}
-		else
-		{
-			render_engine.drawVertexBufferObject(vertex_vbo_, *this);
-		}
-		render_engine.unbindVertexBufferObject(vertex_vbo_,  *this);
 	}
 
 	//

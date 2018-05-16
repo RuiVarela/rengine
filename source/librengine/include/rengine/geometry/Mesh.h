@@ -46,6 +46,7 @@ namespace rengine
 		IndexVector indexes_;
 		VertexBufferObject vertex_vbo_;
 		VertexBufferObject indexes_vbo_;
+		VertexArrayObject vertex_array_object_;
 
 		BoundingBox bounding_box_;
 	};

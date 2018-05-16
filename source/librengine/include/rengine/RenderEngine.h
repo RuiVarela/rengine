@@ -162,8 +162,16 @@ namespace rengine
 		void reportProgram(Program& program);
 
 		//
-		// VertexBufferObject Handling
+		// VBO VAO Handling
 		//
+		void loadVertexArrayObject(VertexArrayObject& vertex_array_object);
+		void unloadVertexArrayObject(VertexArrayObject& vertex_array_object);
+        void bindVertexArrayObject(VertexArrayObject& vertex_array_object);
+        void unbindVertexArrayObject(VertexArrayObject& vertex_array_object);
+		void drawVertexArrayObject(VertexArrayObject& vertex_array_object, VertexBuffer& vertex_buffer);
+		void drawVertexArrayObject(VertexArrayObject& vertex_array_object, Drawable::IndexVector& index_buffer);
+
+
 		void loadVertexBufferObject(VertexBufferObject& vertex_buffer_object, VertexBuffer const& vertex_buffer, Drawable::DrawMode const mode);
 		void loadIndexBufferObject(VertexBufferObject& vertex_buffer_object, Drawable::IndexVector const& index_buffer, Drawable::DrawMode const mode);
 
@@ -171,11 +179,6 @@ namespace rengine
 		void unbindVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer);
 
 		void bindIndexBufferObject(VertexBufferObject const& vertex_buffer_object, Drawable::IndexVector const& index_buffer);
-		void unbindIndexBufferObject(VertexBufferObject const& vertex_buffer_object, Drawable::IndexVector const& index_buffer);
-
-		void drawVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer);
-		void drawVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer, VertexBufferObject const& index_vertex_buffer_object, Drawable::IndexVector const& index_buffer);
-
 		void unloadVertexBufferObject(VertexBufferObject& vertex_buffer_object);
 
 		//

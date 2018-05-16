@@ -44,6 +44,8 @@ namespace rengine
 
 	void Text::initialize()
 	{
+		needs_prepare_rendering = true;
+
 		PositionTextureVertexDeclaration::configure(vertex_buffer_);
 
 		setDrawMode(Drawable::StaticDraw);
@@ -163,11 +165,21 @@ namespace rengine
 		needs_data_refresh = true;
 	}
 
-	void Text::prepareDrawing(RenderEngine& render_engine)
-	{
-		if (!vertex_buffer_.empty())
-		{
-			render_engine.loadVertexBufferObject(vertex_vbo_,  vertex_buffer_, drawMode());
+	void Text::prepareDrawing(RenderEngine &render_engine) {
+		if (needs_prepare_rendering) {
+			render_engine.loadVertexArrayObject(vertex_vao_);
+		}
+
+		render_engine.checkErrors("h1");
+
+		render_engine.bindVertexArrayObject(vertex_vao_);
+
+		if (needs_data_refresh) {
+			render_engine.loadVertexBufferObject(vertex_vbo_, vertex_buffer_, drawMode());
+		}
+
+		if (needs_prepare_rendering) {
+			render_engine.bindVertexBufferObject(vertex_vbo_, vertex_buffer_);
 		}
 
 		needs_prepare_rendering = false;
@@ -176,6 +188,7 @@ namespace rengine
 	void Text::unprepareDrawing(RenderEngine& render_engine)
 	{
 		render_engine.unloadVertexBufferObject(vertex_vbo_);
+		render_engine.unloadVertexArrayObject(vertex_vao_);
 	}
 
 	void Text::updateUniforms(RenderEngine& render_engine)
@@ -199,13 +212,10 @@ namespace rengine
 				addGeometry(position_, text_);
 
 				prepareDrawing(render_engine);
-
 				needs_data_refresh = false;
 			}
 
-			render_engine.bindVertexBufferObject(vertex_vbo_,  vertex_buffer_);
-			render_engine.drawVertexBufferObject(vertex_vbo_, vertex_buffer_);
-			render_engine.unbindVertexBufferObject(vertex_vbo_,  vertex_buffer_);
+			render_engine.drawVertexArrayObject(vertex_vao_, vertex_buffer_);
 		}
 	}
 

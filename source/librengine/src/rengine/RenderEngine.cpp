@@ -1320,8 +1320,46 @@ namespace rengine
 	}
 
 	//
-	// Vertex Buffer Object
+	// VBO / VAO
 	//
+	void RenderEngine::loadVertexArrayObject(VertexArrayObject &vertex_array_object) {
+		ResourceId resource_id = vertex_array_object.getId(this);
+
+		if (resource_id == 0) {
+			glGenVertexArrays(1, &resource_id);
+			vertex_array_object.setId(resource_id, this);
+		}
+	}
+
+	void RenderEngine::unloadVertexArrayObject(VertexArrayObject &vertex_array_object) {
+		if (vertex_array_object.getId(this) != 0) {
+			glDeleteVertexArrays(1, &vertex_array_object.getId(this));
+			vertex_array_object.setId(0, this);
+		}
+	}
+
+	void RenderEngine::bindVertexArrayObject(VertexArrayObject& vertex_array_object) {
+		ResourceId resource_id = vertex_array_object.getId(this);
+		glBindVertexArray(resource_id);
+	}
+
+	void RenderEngine::drawVertexArrayObject(VertexArrayObject& vertex_array_object, VertexBuffer& vertex_buffer)
+	{
+		bindVertexArrayObject(vertex_array_object);
+		glDrawArrays(GL_TRIANGLES, 0, vertex_buffer.size());
+		unbindVertexArrayObject(vertex_array_object);
+	}
+
+	void RenderEngine::drawVertexArrayObject(VertexArrayObject& vertex_array_object, Drawable::IndexVector& index_buffer)
+	{
+		bindVertexArrayObject(vertex_array_object);
+		glDrawElements(GL_TRIANGLES, index_buffer.size(), GL_UNSIGNED_INT, VertexBuffer::DataPointer(0));
+		unbindVertexArrayObject(vertex_array_object);
+	}
+
+	void RenderEngine::unbindVertexArrayObject(VertexArrayObject& vertex_array_object) {
+		glBindVertexArray(0);
+	}
 
 	void RenderEngine::loadVertexBufferObject(VertexBufferObject& vertex_buffer_object, VertexBuffer const& vertex_buffer, Drawable::DrawMode const mode)
 	{
@@ -1341,7 +1379,6 @@ namespace rengine
 
 	void RenderEngine::bindVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer)
 	{
-		//TODO: performance improvement needed
 		ResourceId resource_id = vertex_buffer_object.getId(this);
 		glBindBuffer(GL_ARRAY_BUFFER, resource_id);
 
@@ -1421,8 +1458,6 @@ namespace rengine
 				glEnableVertexAttribArray(input_available);
 			}
 		}
-
-
 	}
 
 	void RenderEngine::unbindVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer)
@@ -1438,21 +1473,6 @@ namespace rengine
 		ResourceId resource_id = vertex_buffer_object.getId(this);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, resource_id);
-	}
-
-	void RenderEngine::unbindIndexBufferObject(VertexBufferObject const& vertex_buffer_object, Drawable::IndexVector const& index_buffer)
-	{
-
-	}
-
-	void RenderEngine::drawVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer)
-	{
-		glDrawArrays(GL_TRIANGLES, 0, vertex_buffer.size());
-	}
-
-	void RenderEngine::drawVertexBufferObject(VertexBufferObject const& vertex_buffer_object, VertexBuffer const& vertex_buffer, VertexBufferObject const& index_vertex_buffer_object, Drawable::IndexVector const& index_buffer)
-	{
-		glDrawElements(GL_TRIANGLES, index_buffer.size(), GL_UNSIGNED_INT, VertexBuffer::DataPointer(0));
 	}
 
 	void RenderEngine::loadIndexBufferObject(VertexBufferObject& vertex_buffer_object, Drawable::IndexVector const& index_buffer, Drawable::DrawMode const mode)

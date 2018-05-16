@@ -47,9 +47,7 @@ namespace rengine
 				needs_data_refresh = false;
 			}
 
-			render_engine.bindVertexBufferObject(vertex_vbo_,  vertex_buffer_);
-			render_engine.drawVertexBufferObject(vertex_vbo_, vertex_buffer_);
-			render_engine.unbindVertexBufferObject(vertex_vbo_,  vertex_buffer_);
+			render_engine.drawVertexArrayObject(vertex_vao_, vertex_buffer_);
 		}
 	}
 

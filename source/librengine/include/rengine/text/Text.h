@@ -75,6 +75,7 @@ namespace rengine
 
 		VertexBuffer vertex_buffer_;
 		VertexBufferObject vertex_vbo_;
+		VertexArrayObject vertex_vao_;
 
 		static std::string effect_file_;
 	};

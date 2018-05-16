@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 #include <cassert>
+#include <zconf.h>
 
 //#define XRANDR_EXTENSIONS
 
