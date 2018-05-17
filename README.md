@@ -26,6 +26,7 @@ I may have used code that was not mine... sorry
 [xx.xx.xx] -- Port VR Pinscreen
 [xx.xx.xx] -- Finish Atlas Generator
 
+[16.05.16] -- VAO integration. support for Opengl 3.2 Core
 [06.10.11] -- Integrated Smokin::Performance analyzer
 [06.10.11] -- Added several rectangle bin packing algorithms
 [06.10.11] -- Inital (non working) implementation for Altlas Generator
