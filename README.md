@@ -48,9 +48,32 @@ This is a 100% complete rubiks cube toy app
 
 ![Rubikal](https://github.com/RuiVarela/rengine/raw/master/preview_rubik.gif)
 
+### Heightmap
+A classic heighmap renderer
 
+![Heightmap](https://github.com/RuiVarela/rengine/raw/master/preview_heightmap.gif)
 
-###
+### Shapes
+Shape tester
+
+![Shapes](https://github.com/RuiVarela/rengine/raw/master/preview_shader.gif)
+
+### GPU Filters
+Image processing pipeline
+
+![Processor](https://github.com/RuiVarela/rengine/raw/master/ppreview_image_processor.png)
+
+### Multi Target Rendering
+Advanced framebuffer targets
+
+![Framebuffer](https://github.com/RuiVarela/rengine/raw/master/preview_framebuffer.gif)
+
+### Fonts and Text 
+![Text](https://github.com/RuiVarela/rengine/raw/master/preview_text.gif)
+
+### Things lost in space-time
+It also has a megadrive emulator, using the [Genesis-Plus-GX](https://github.com/ekeeke/Genesis-Plus-GX) code but it only builds in windows ... I think...  
+Also has a renderer for [imSquared](https://github.com/RuiVarela/imSquared) game
 
 ## Engine Progress
 ~~~
