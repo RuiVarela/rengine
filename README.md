@@ -1,12 +1,58 @@
 # R-Engine : Raw-Engine - 3D Framework.
-a never ending 3d engine
-
-Rui Varela - rui.filipe.varela@gmail.com
+A never ending 3d engine I wrote in my spare time for a couple or years,
 
 I may have used code that was not mine... sorry
 
+## Applications
+Since this was "fun time" code, it probably is not ready to be used in production,  
+but there are a set of cool things on the engine
+- Friendly C++ ecosystem with cross supper on linux and windows
+  - Native windowing
+  - Nice threading system with synchronization objects
+  - Better file handling
+  - Zip support without dependencies
+  - Zip filesystem abstraction
+  - Time classes
+  - Actual usable string functions
+  - Log system
+  - Camera Capture support
+  - Minimal UnitTest runner
+  - Debug helpers
+  - Memory checkers to help finding leaks
+  - XmlSerialization - Json was not a thing a the time
+- Computer Graphics
+  - A fancy effects system to help creating shaders
+  - Image loaders for (png, jpg, bmp) without external libraries
+  - A render state manager
+  - Resource manager to avoid multiple loads of the same resources (textures, shaders, images, fonts, etc..)
+  - Basic Geometries (Cube, Capsule, Torus, etc)
+- A Quake-like console
+  - Console variables
+  - Commands
+  - Proper Math Classes 
+  - Bindable inputs
+  - A simple script loader
+  - Isolated Renderer
+- Font rendering "more or less" accurate
+  - Supports bitmaps fonts
+  - Supports WinFonts
+  - Supports TrueType
+  - Has a fallback Console Font
 
-#Engine Progress
+
+### Rubikal
+This is a 100% complete rubiks cube toy app
+- It has shuffler and a human solver algorithm
+- It has a [OpenCV assisted scanner](https://www.youtube.com/watch?v=lctgE5b0Ikg&t=10s)
+- it is fully configurable :)
+
+![Rubikal](https://github.com/RuiVarela/rengine/raw/master/preview_rubik.gif)
+
+
+
+###
+
+## Engine Progress
 ~~~
 [xx.xx.xx] -- Image Processing System
 [xx.xx.xx] -- Post Processing Units
