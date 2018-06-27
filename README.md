@@ -19,7 +19,7 @@ but there are a set of cool things on the engine
   - Minimal UnitTest runner
   - Debug helpers
   - Memory checkers to help finding leaks
-  - XmlSerialization - Json was not a thing a the time
+  - XmlSerialization - Json was not a thing at the time
 - Computer Graphics
   - A fancy effects system to help creating shaders
   - Image loaders for (png, jpg, bmp) without external libraries
