@@ -6,7 +6,7 @@ I may have used code that was not mine... sorry
 ## Applications
 Since this was "fun time" code, it probably is not ready to be used in production,  
 but there are a set of cool things on the engine
-- Friendly C++ ecosystem with cross supper on linux and windows
+- Friendly C++ ecosystem with cross support on linux and windows
   - Native windowing
   - Nice threading system with synchronization objects
   - Better file handling
