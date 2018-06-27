@@ -61,7 +61,7 @@ Shape tester
 ### GPU Filters
 Image processing pipeline
 
-![Processor](https://github.com/RuiVarela/rengine/raw/master/ppreview_image_processor.png)
+![Processor](https://github.com/RuiVarela/rengine/raw/master/preview_image_processor.png)
 
 ### Multi Target Rendering
 Advanced framebuffer targets
