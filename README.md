@@ -1,8 +1,6 @@
 # R-Engine : Raw-Engine - 3D Framework.
 A never ending 3d engine I wrote in my spare time for a couple or years,
 
-I may have used code that was not mine... sorry
-
 ## Applications
 Since this was "fun time" code, it probably is not ready to be used in production,  
 but there are a set of cool things on the engine
